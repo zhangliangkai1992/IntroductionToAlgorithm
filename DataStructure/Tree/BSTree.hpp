@@ -113,6 +113,30 @@ public:
 			}
 		}
 	}
+	void postIter(AccType& f)
+	{
+		BSNode* p = nullptr;
+		BSNode* cur = root;
+		std::stack<BSNode*> st;
+		if(nullptr != root)st.push(root);
+		while(!st.empty()) {
+			cur = st.top();
+			if((nullptr == cur->lchild && nullptr == cur->rchild) || 
+					(nullptr != p && (p == cur->lchild || p == cur->rchild))) {
+				f(cur->data);
+				st.pop();
+				p = cur;
+			}
+			else {
+				if(nullptr != cur->rchild) {
+					st.push(cur->rchild);
+				}
+				if(nullptr != cur->lchild) {
+					st.push(cur->lchild);
+				}
+			}
+		}
+	}
 private:
 	int treeSize;
 	BSNode* root;

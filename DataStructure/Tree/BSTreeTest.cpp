@@ -22,5 +22,8 @@ int main()
 	std::cout << "prev iter" << std::endl;
 	tree.prevIter(f);
 	std::cout << std::endl;
+	std::cout << "post iter" << std::endl;
+	tree.postIter(f);
+	std::cout << std::endl;
 	return 0;
 }
